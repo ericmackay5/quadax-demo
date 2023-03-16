@@ -85,9 +85,10 @@ In this demo, we will keep the topic creation manual. Use the UI to create a new
     PARTITION BY PAYLOAD[1]->Subscriber->MemberId;
 
 
-CREATE TABLE AS SELECT LATEST_BY_OFFSET(FirstName), LATEST_BY_OFFSET(LastName), MemberID from PatientsParsed
-GROUP BY MemberId 
-EMIT CHANGES;
+### Create a table for patient information
+    CREATE TABLE AS SELECT LATEST_BY_OFFSET(FirstName), LATEST_BY_OFFSET(LastName), MemberID from PatientsParsed
+    GROUP BY MemberId 
+    EMIT CHANGES;
 
 
 ### Create Patient Coverage Stream from existing 'example' topic
